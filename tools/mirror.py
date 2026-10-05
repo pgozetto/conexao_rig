@@ -110,6 +110,27 @@ def main():
     for e in EXTRA:
         get_asset(BASE + e)
 
+    # fotos novas da Andréa (geradas por tools/compor_fotos.py)
+    for antigo, novo in {
+        "wp-content/uploads/2023/10/Slice-10121.webp": "img/andrea-como-funciona.webp",
+        "wp-content/uploads/2023/10/Frame-6811123.webp": "img/andrea-como-funciona-mobile.webp",
+        "wp-content/uploads/2023/09/Slice-7.webp": "img/andrea-fundadora.webp",
+        "wp-content/uploads/2023/09/Frame-67.webp": "img/andrea-fundadora-mobile.webp",
+    }.items():
+        page = page.replace(antigo, novo)
+
+    # preços dos planos
+    page = page.replace('R$ 73<span style="font-size: 24px">,07<', 'R$ 73<span style="font-size: 24px">,73<')
+    page = page.replace('R$ 59<span style="font-size: 24px">,70<', 'R$ 61<span style="font-size: 24px">,38<')
+    page = page.replace('R$ 29<span style="font-size: 24px">,70<', 'R$ 30<span style="font-size: 24px">,54<')
+
+    # botão do plano Express -> checkout (no original abria um popup quebrado)
+    i = page.find('data-id="d7b3f8f"')
+    j = page.find('href="#elementor-action', i)
+    if i != -1 and j != -1 and j - i < 600:
+        k = page.find('"', j + 6)
+        page = page[:j] + 'href="https://payfast.greenn.com.br/34415" target="_blank' + page[k:]
+
     # WhatsApp de contato
     page = page.replace("https://wa.link/xy2hzd", "https://wa.me/5511981112451")
 

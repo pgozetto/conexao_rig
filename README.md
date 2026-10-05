@@ -41,8 +41,19 @@ A pasta `site/` é autossuficiente. Basta enviá-la para a raiz de qualquer hosp
 | Texto animado "Para quem quer…" ficou azul-claro | Seção "O ConexãoRIG foi desenvolvido…" |
 | Degradê da marca clareado no texto sobre fundo escuro | Bio da fundadora |
 | Lazy-load do Smush trocado por carregamento normal das imagens | Todas as imagens |
+| Fotos novas da Andréa Gozetto (desktop e celular) | Seções "Como funciona" e "Sobre a fundadora" |
+| Preços: trimestral R$ 73,73/mês (R$ 207 à vista), anual R$ 61,38/mês (R$ 597 à vista), Express R$ 30,54/mês | "Escolha seu plano" |
+| Botão do Express passou a levar ao checkout (antes abria um popup que não funcionava) | "Escolha seu plano" |
 
 Todas as mudanças visuais ficam em [`site/css/contraste.css`](site/css/contraste.css), sem alterar os arquivos originais do tema.
+
+## Fotos das seções
+
+As fotos da Andréa nas seções "Como funciona" e "Sobre a fundadora" fazem parte das imagens de fundo, junto com o fundo escuro, os brilhos e o mockup de dispositivos. Para trocá-las:
+
+1. Coloque as fotos recortadas (PNG/WebP com fundo transparente) em `fotos/andrea-1.webp` e `fotos/andrea-2.webp`.
+2. Rode `python tools/compor_fotos.py` (precisa de `pip install pillow numpy`).
+3. O script gera `site/img/andrea-*.webp` (versões desktop e celular), já usadas pelo `index.html`.
 
 ## Integrações a revisar
 
@@ -53,6 +64,7 @@ Os links abaixo continuam apontando para as contas originais e devem ser conferi
 | Botão **ENTRAR** (área de membros) | `http://conexaorig.astronmembers.com/` |
 | Plano trimestral | `https://payfast.greenn.com.br/34557/offer/s3NGIx?cupom=RIG90` |
 | Plano anual | `https://payfast.greenn.com.br/34413?cupom=RIG365` |
+| Plano Express | `https://payfast.greenn.com.br/34415` |
 | WhatsApp (botão "Entrar em contato") | `https://wa.me/5511981112451` (+55 11 98111-2451) |
 | Cursos avulsos (Greenn) | `payfast.greenn.com.br/34415`, `34421`, `34422`, `34424` a `34430` |
 | Link externo | `http://ricardowebm.com.br/lp` |
