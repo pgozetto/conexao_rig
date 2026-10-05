@@ -95,3 +95,18 @@
 .elementor-element-3d42acc .elementor-tab-content p {
   color: var(--rig-texto) !important;
 }
+
+/* ---------- Celular: foto da seção "Como funciona" centralizada e maior ----------
+   Imagem gerada em 2,5x (1600x1400) por tools/compor_fotos.py */
+@media (max-width: 767px) {
+  .elementor-2598 .elementor-element.elementor-element-be897d4 {
+    --padding-top: 530px !important;
+  }
+  .elementor-2598 .elementor-element.elementor-element-be897d4:not(.elementor-motion-effects-element-type-background) {
+    background-image: url("../img/andrea-como-funciona-mobile.webp") !important;
+    background-size: 640px auto !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-color: #07051f !important;
+  }
+}

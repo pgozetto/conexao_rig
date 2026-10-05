@@ -114,21 +114,33 @@ def secao1():
     base.paste(orig, (0, 0), mdisp)
     base.convert("RGB").save(OUT / "andrea-como-funciona.webp", quality=88)
 
-    # versão celular: mesma composição reduzida, sobre o fundo do celular
-    mob = Image.open(UP / "10/Frame-6811123.webp").convert("RGBA")
-    mbase = limpar_fundo(mob, (270, 50, 500, 390), 40)
-    s, ox, oy = 0.305, 172, 39
-    camada = Image.new("RGBA", orig.size, (0, 0, 0, 0))
-    camada.alpha_composite(foto, pos)
-    camada.paste(orig, (0, 0), mdisp)
-    a = np.asarray(camada.getchannel("A")).copy()
-    a[np.asarray(mdisp) > 0] = 255
+    # versão celular: foto + dispositivos centralizados e grandes, em 2,5x
+    # (exibida com background-size: 640px, ver site/css/contraste.css)
+    K = 1.27  # escala relativa à composição do desktop
+    camada = Image.new("RGBA", (round(orig.width * K), round(orig.height * K)), (0, 0, 0, 0))
+    fm = preparar_foto(FOTO1, 0.62 * K, 560 * K, 780 * K, laterais=0.08)  # direto da foto original
+    camada.alpha_composite(fm, (round(pos[0] * K), round(pos[1] * K)))
+    orig_k = orig.resize(camada.size, Image.LANCZOS)
+    mdisp_k = mdisp.resize(camada.size, Image.LANCZOS)
+    camada.paste(orig_k, (0, 0), mdisp_k)
+    a = np.maximum(np.asarray(camada.getchannel("A")), np.asarray(mdisp_k))
     camada.putalpha(Image.fromarray(a))
-    cx0, cy0, cx1, cy1 = 300, 60, 1000, 1080
-    peq = camada.crop((cx0, cy0, cx1, cy1))
-    peq = peq.resize((round(peq.width * s), round(peq.height * s)), Image.LANCZOS)
-    mbase.alpha_composite(peq, (round(ox + cx0 * s), round(oy + cy0 * s)))
-    mbase.convert("RGB").save(OUT / "andrea-como-funciona-mobile.webp", quality=88)
+    grupo = camada.crop(tuple(round(v * K) for v in (320, 92, 980, 1075)))
+
+    W, H = 1600, 1400  # 640 x 560 px de CSS
+    mob = Image.open(UP / "10/Frame-6811123.webp").convert("RGBA")
+    mfundo = limpar_fundo(mob, (270, 50, 500, 390), 40).resize((1600, 2160), Image.BICUBIC).crop((0, 0, W, H))
+    arr = np.asarray(mfundo, dtype=np.float32)
+    cor = arr[H - 40 : H, W // 2 - 200 : W // 2 + 200, :3].reshape(-1, 3).mean(axis=0)
+    # bordas (laterais e base) se fundem numa cor sólida, usada também no CSS
+    ys = np.arange(H, dtype=np.float32)[:, None]
+    xs = np.arange(W, dtype=np.float32)[None, :]
+    t = np.clip((H - ys) / 240, 0, 1) * np.clip(xs / 160, 0, 1) * np.clip((W - 1 - xs) / 160, 0, 1)
+    arr[..., :3] = arr[..., :3] * t[..., None] + cor * (1 - t[..., None])
+    mfundo = Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
+    mfundo.alpha_composite(grupo, ((W - grupo.width) // 2, 40))
+    mfundo.convert("RGB").save(OUT / "andrea-como-funciona-mobile.webp", quality=88)
+    print("cor de fundo do celular: #%02x%02x%02x" % tuple(round(c) for c in cor))
 
 
 # ---------------------------------------------------------------- seção 2
