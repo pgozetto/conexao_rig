@@ -53,7 +53,7 @@ Os links abaixo continuam apontando para as contas originais e devem ser conferi
 | Botão **ENTRAR** (área de membros) | `http://conexaorig.astronmembers.com/` |
 | Plano trimestral | `https://payfast.greenn.com.br/34557/offer/s3NGIx?cupom=RIG90` |
 | Plano anual | `https://payfast.greenn.com.br/34413?cupom=RIG365` |
-| WhatsApp | `https://wa.link/xy2hzd` |
+| WhatsApp (botão "Entrar em contato") | `https://wa.me/5511981112451` (+55 11 98111-2451) |
 | Cursos avulsos (Greenn) | `payfast.greenn.com.br/34415`, `34421`, `34422`, `34424` a `34430` |
 | Link externo | `http://ricardowebm.com.br/lp` |
 | Pixel do Facebook (PixelYourSite) | ID `671927501267047`, no bloco `pysOptions` e no `<noscript>` |

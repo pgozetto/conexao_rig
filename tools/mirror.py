@@ -110,6 +110,9 @@ def main():
     for e in EXTRA:
         get_asset(BASE + e)
 
+    # WhatsApp de contato
+    page = page.replace("https://wa.link/xy2hzd", "https://wa.me/5511981112451")
+
     # correções de contraste (site/css/contraste.css)
     page = page.replace("</head>", '<link rel="stylesheet" href="css/contraste.css">\n</head>', 1)
 
