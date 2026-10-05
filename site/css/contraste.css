@@ -1,0 +1,97 @@
+/* Correções de contraste: textos #333 sobre fundos escuros.
+   Cada bloco é identificado pelo data-id do widget do Elementor. */
+
+:root {
+  --rig-texto: #d6d7de;        /* parágrafos sobre preto */
+  --rig-texto-suave: #b4b7c3;  /* legendas pequenas sobre preto */
+  --rig-texto-roxo: #ece9ff;   /* textos sobre o card roxo/azul (plano anual) */
+  --rig-destaque: #ffffff;
+  --rig-azul-claro: #7aa2ff;
+}
+
+/* ---------- Hero ---------- */
+.elementor-element-3619d32 .elementor-widget-container,
+.elementor-element-3619d32 p {
+  color: var(--rig-texto) !important;
+}
+.elementor-element-3619d32 strong,
+.elementor-element-3619d32 b {
+  color: var(--rig-destaque);
+}
+.elementor-element-229b34d .elementor-widget-container,
+.elementor-element-229b34d p,
+.elementor-element-1c49535 .elementor-widget-container,
+.elementor-element-1c49535 p {
+  color: var(--rig-texto-suave) !important;
+}
+
+/* ---------- Como funciona (cards) ---------- */
+.elementor-element-01e033b .elementor-icon-box-description,
+.elementor-element-ff653b1 .elementor-icon-box-description,
+.elementor-element-d1613b3 .elementor-icon-box-description {
+  color: var(--rig-texto) !important;
+}
+
+/* ---------- "Para quem quer..." (texto animado) ---------- */
+.elementor-element-5225c44 .premium-atext__text,
+.elementor-element-5225c44 .premium-atext__text * {
+  color: var(--rig-azul-claro) !important;
+}
+
+/* ---------- Planos: trimestral e express (fundo preto) ---------- */
+.elementor-element-96193f2 .elementor-widget-container,
+.elementor-element-96193f2 p,
+.elementor-element-8e8549b .elementor-widget-container,
+.elementor-element-8e8549b p {
+  color: var(--rig-texto) !important;
+}
+.elementor-element-8e8549b strong,
+.elementor-element-8e8549b b {
+  color: var(--rig-destaque);
+}
+.elementor-element-a737547 .elementor-widget-container,
+.elementor-element-a737547 p,
+.elementor-element-1babd61 .elementor-widget-container,
+.elementor-element-1babd61 p,
+.elementor-element-ab8c7dc .elementor-widget-container,
+.elementor-element-ab8c7dc p,
+.elementor-element-40a8cf1 .elementor-widget-container,
+.elementor-element-40a8cf1 p {
+  color: var(--rig-texto-suave) !important;
+}
+
+/* ---------- Plano anual (card roxo/azul) ---------- */
+.elementor-element-bbef8f3 .elementor-widget-container,
+.elementor-element-bbef8f3 p,
+.elementor-element-ebee9d6 .elementor-widget-container,
+.elementor-element-ebee9d6 p,
+.elementor-element-d3fd646 .elementor-widget-container,
+.elementor-element-d3fd646 p,
+.elementor-element-aaf55b0 .elementor-widget-container,
+.elementor-element-aaf55b0 p,
+.elementor-element-e7c53c4 .elementor-widget-container,
+.elementor-element-e7c53c4 p {
+  color: var(--rig-texto-roxo) !important;
+}
+
+/* ---------- Sobre a fundadora ---------- */
+.elementor-element-384bef9 .elementor-widget-container,
+.elementor-element-384bef9 p {
+  color: var(--rig-texto) !important;
+}
+.elementor-element-384bef9 strong,
+.elementor-element-384bef9 b {
+  color: var(--rig-destaque);
+}
+/* degradê da marca, clareado para fundo escuro */
+.elementor-element-384bef9 .gradiente {
+  background: linear-gradient(45deg, #c07bff, #7aa2ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* ---------- FAQ (respostas das abas Conteúdo / Acesso / Pagamento) ---------- */
+.elementor-element-3d42acc .elementor-tab-content,
+.elementor-element-3d42acc .elementor-tab-content p {
+  color: var(--rig-texto) !important;
+}
